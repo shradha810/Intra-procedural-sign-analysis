@@ -1,0 +1,103 @@
+public class bitvectorrd.Tester extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        bitvectorrd.Tester this;
+
+        this := @this: bitvectorrd.Tester;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+
+    public static void foo1(boolean)
+    {
+        boolean input;
+        byte a, b;
+        int c;
+
+        input := @parameter0: boolean;
+        a = 42;
+        b = 87;
+        if input == 0 goto label0;
+
+        c = a + b;
+        goto label1;
+
+     label0:
+        c = a - b;
+
+     label1:
+        return;
+    }
+
+    public static void foo2()
+    {
+        byte x, y;
+        int z, v, w;
+
+        x = 5;
+        y = neg x;
+        z = x + y;
+        v = x * y;
+        w = x / y;
+        return;
+    }
+
+    public static void foo3()
+    {
+        int[] arr;
+        byte p, q;
+        int r, p, q;
+
+        arr = newarray (int)[10];
+        p = -2;
+        q = -5;
+        p = p * p;
+        r = arr[p];
+        if r <= 0 goto label0;
+
+        q = q * q;
+        goto label1;
+
+     label0:
+        q = q + q;
+
+     label1:
+        return;
+    }
+
+    public static int foo4(int)
+    {
+        int input, res, i;
+
+        input := @parameter0: int;
+        res = 1;
+        i = 2;
+        goto label1;
+
+     label0:
+        res = res * i;
+        i = i + 1;
+
+     label1:
+        if i <= input goto label0;
+
+        return res;
+    }
+
+    public static void foo5()
+    {
+        byte a, b, c;
+        int d, e, b, c;
+
+        a = 0;
+        b = 5;
+        c = -5;
+        d = a * b;
+        e = d / b;
+        b = b + a;
+        c = c + a;
+        return;
+    }
+}

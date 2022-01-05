@@ -1,0 +1,410 @@
+Soot started on Tue Oct 26 22:37:00 IST 2021
+Transforming bitvectorrd.Tester... 
+Analysing method foo1
+local variables: [input, a, b, c]
+Initial pairs: Pair #input,b
+Initial pairs: Pair a,T
+Initial pairs: Pair b,T
+Initial pairs: Pair c,T
+Statement: input := @parameter0: boolean
+
+InSet: 
+[#input, b]  [a, T]  [b, T]  [c, T]  
+
+
+Outset: 
+[#input, b]  [a, T]  [b, T]  [c, T]  
+Statement: a = 42
+
+InSet: 
+[#input, b]  [a, T]  [b, T]  [c, T]  
+
+pair to be killed: a,T
+After Killing{Pair #input,b, Pair c,T, Pair b,T}
+Generating a,+
+
+Outset: 
+[#input, b]  [c, T]  [b, T]  [a, +]  
+Statement: b = 87
+
+InSet: 
+[#input, b]  [c, T]  [b, T]  [a, +]  
+
+pair to be killed: b,T
+After Killing{Pair #input,b, Pair c,T, Pair a,+}
+Generating b,+
+
+Outset: 
+[#input, b]  [c, T]  [a, +]  [b, +]  
+Statement: if input == 0 goto c = a - b
+Statement: c = a - b
+
+InSet: 
+[#input, b]  [c, T]  [a, +]  [b, +]  
+
+pair to be killed: c,T
+After Killing{Pair #input,b, Pair b,+, Pair a,+}
+Generating c,T
+
+Outset: 
+[#input, b]  [b, +]  [a, +]  [c, T]  
+Statement: c = a + b
+
+InSet: 
+[#input, b]  [c, T]  [a, +]  [b, +]  
+
+pair to be killed: c,T
+After Killing{Pair #input,b, Pair b,+, Pair a,+}
+Generating c,+
+
+Outset: 
+[#input, b]  [b, +]  [a, +]  [c, +]  
+Statement: goto [?= return]
+Statement: return
+result
+[input,b]
+[b,+]
+[a,+]
+[c,T]
+Analysing method foo2
+local variables: [x, y, z, v, w]
+Initial pairs: Pair x,T
+Initial pairs: Pair y,T
+Initial pairs: Pair z,T
+Initial pairs: Pair v,T
+Initial pairs: Pair w,T
+Statement: x = 5
+
+InSet: 
+[x, T]  [y, T]  [z, T]  [v, T]  [w, T]  
+
+pair to be killed: x,T
+After Killing{Pair w,T, Pair y,T, Pair z,T, Pair v,T}
+Generating x,+
+
+Outset: 
+[w, T]  [y, T]  [z, T]  [v, T]  [x, +]  
+Statement: y = neg x
+
+InSet: 
+[w, T]  [y, T]  [z, T]  [v, T]  [x, +]  
+
+pair to be killed: y,T
+After Killing{Pair w,T, Pair x,+, Pair z,T, Pair v,T}
+Generating y,-
+
+Outset: 
+[w, T]  [x, +]  [z, T]  [v, T]  [y, -]  
+Statement: z = x + y
+
+InSet: 
+[w, T]  [x, +]  [z, T]  [v, T]  [y, -]  
+
+pair to be killed: z,T
+After Killing{Pair w,T, Pair x,+, Pair y,-, Pair v,T}
+Generating z,T
+
+Outset: 
+[w, T]  [x, +]  [y, -]  [v, T]  [z, T]  
+Statement: v = x * y
+
+InSet: 
+[w, T]  [x, +]  [y, -]  [v, T]  [z, T]  
+
+pair to be killed: v,T
+After Killing{Pair w,T, Pair x,+, Pair y,-, Pair z,T}
+Generating v,-
+
+Outset: 
+[w, T]  [x, +]  [y, -]  [z, T]  [v, -]  
+Statement: w = x / y
+
+InSet: 
+[w, T]  [x, +]  [y, -]  [z, T]  [v, -]  
+
+pair to be killed: w,T
+After Killing{Pair v,-, Pair x,+, Pair y,-, Pair z,T}
+Generating w,T
+
+Outset: 
+[v, -]  [x, +]  [y, -]  [z, T]  [w, T]  
+Statement: return
+result
+[v,-]
+[x,+]
+[y,-]
+[z,T]
+[w,T]
+Analysing method foo3
+local variables: [arr, p, q, r, p, q]
+Initial pairs: Pair #arr,b
+Initial pairs: Pair p,T
+Initial pairs: Pair q,T
+Initial pairs: Pair r,T
+Initial pairs: Pair p,T
+Initial pairs: Pair q,T
+Statement: arr = newarray (int)[10]
+
+InSet: 
+[#arr, b]  [p, T]  [q, T]  [r, T]  
+
+
+Outset: 
+[#arr, b]  [p, T]  [q, T]  [r, T]  
+Statement: p = -2
+
+InSet: 
+[#arr, b]  [p, T]  [q, T]  [r, T]  
+
+pair to be killed: p,T
+After Killing{Pair #arr,b, Pair r,T, Pair q,T}
+Generating p,-
+
+Outset: 
+[#arr, b]  [r, T]  [q, T]  [p, -]  
+Statement: q = -5
+
+InSet: 
+[#arr, b]  [r, T]  [q, T]  [p, -]  
+
+pair to be killed: q,T
+After Killing{Pair #arr,b, Pair r,T, Pair p,-}
+Generating q,-
+
+Outset: 
+[#arr, b]  [r, T]  [p, -]  [q, -]  
+Statement: p = p * p
+
+InSet: 
+[#arr, b]  [r, T]  [p, -]  [q, -]  
+
+pair to be killed: p,-
+After Killing{Pair #arr,b, Pair r,T, Pair q,-}
+Generating p,+
+
+Outset: 
+[#arr, b]  [r, T]  [q, -]  [p, +]  
+Statement: r = arr[p]
+
+InSet: 
+[#arr, b]  [r, T]  [q, -]  [p, +]  
+
+pair to be killed: r,T
+After Killing{Pair #arr,b, Pair p,+, Pair q,-}
+Generating r,T
+
+Outset: 
+[#arr, b]  [p, +]  [q, -]  [r, T]  
+Statement: if r <= 0 goto q = q + q
+Statement: q = q + q
+
+InSet: 
+[#arr, b]  [p, +]  [q, -]  [r, T]  
+
+pair to be killed: q,-
+After Killing{Pair #arr,b, Pair p,+, Pair r,T}
+Generating q,-
+
+Outset: 
+[#arr, b]  [p, +]  [r, T]  [q, -]  
+Statement: q = q * q
+
+InSet: 
+[#arr, b]  [p, +]  [q, -]  [r, T]  
+
+pair to be killed: q,-
+After Killing{Pair #arr,b, Pair p,+, Pair r,T}
+Generating q,+
+
+Outset: 
+[#arr, b]  [p, +]  [r, T]  [q, +]  
+Statement: goto [?= return]
+Statement: return
+result
+[arr,b]
+[p,+]
+[r,T]
+[q,T]
+Analysing method foo4
+local variables: [input, res, i]
+Initial pairs: Pair input,T
+Initial pairs: Pair res,T
+Initial pairs: Pair i,T
+Statement: input := @parameter0: int
+
+InSet: 
+[input, T]  [res, T]  [i, T]  
+
+
+Outset: 
+[input, T]  [res, T]  [i, T]  
+Statement: res = 1
+
+InSet: 
+[input, T]  [res, T]  [i, T]  
+
+pair to be killed: res,T
+After Killing{Pair input,T, Pair i,T}
+Generating res,+
+
+Outset: 
+[input, T]  [i, T]  [res, +]  
+Statement: i = 2
+
+InSet: 
+[input, T]  [i, T]  [res, +]  
+
+pair to be killed: i,T
+After Killing{Pair input,T, Pair res,+}
+Generating i,+
+
+Outset: 
+[input, T]  [res, +]  [i, +]  
+Statement: goto [?= (branch)]
+Statement: if i <= input goto res = res * i
+Statement: res = res * i
+
+InSet: 
+[input, T]  [res, +]  [i, +]  
+
+pair to be killed: res,+
+After Killing{Pair input,T, Pair i,+}
+Generating res,+
+
+Outset: 
+[input, T]  [i, +]  [res, +]  
+Statement: i = i + 1
+
+InSet: 
+[input, T]  [i, +]  [res, +]  
+
+pair to be killed: i,+
+After Killing{Pair input,T, Pair res,+}
+Generating i,+
+
+Outset: 
+[input, T]  [res, +]  [i, +]  
+Statement: if i <= input goto res = res * i
+Statement: res = res * i
+
+InSet: 
+[input, T]  [res, +]  [i, +]  
+
+pair to be killed: res,+
+After Killing{Pair input,T, Pair i,+}
+Generating res,+
+
+Outset: 
+[input, T]  [i, +]  [res, +]  
+Statement: i = i + 1
+
+InSet: 
+[input, T]  [i, +]  [res, +]  
+
+pair to be killed: i,+
+After Killing{Pair input,T, Pair res,+}
+Generating i,+
+
+Outset: 
+[input, T]  [res, +]  [i, +]  
+Statement: return res
+result
+[input,T]
+[res,+]
+[i,+]
+Analysing method foo5
+local variables: [a, b, c, d, e, b, c]
+Initial pairs: Pair a,T
+Initial pairs: Pair b,T
+Initial pairs: Pair c,T
+Initial pairs: Pair d,T
+Initial pairs: Pair e,T
+Initial pairs: Pair b,T
+Initial pairs: Pair c,T
+Statement: a = 0
+
+InSet: 
+[a, T]  [b, T]  [c, T]  [d, T]  [e, T]  
+
+pair to be killed: a,T
+After Killing{Pair e,T, Pair b,T, Pair c,T, Pair d,T}
+Generating a,0
+
+Outset: 
+[e, T]  [b, T]  [c, T]  [d, T]  [a, 0]  
+Statement: b = 5
+
+InSet: 
+[e, T]  [b, T]  [c, T]  [d, T]  [a, 0]  
+
+pair to be killed: b,T
+After Killing{Pair e,T, Pair a,0, Pair c,T, Pair d,T}
+Generating b,+
+
+Outset: 
+[e, T]  [a, 0]  [c, T]  [d, T]  [b, +]  
+Statement: c = -5
+
+InSet: 
+[e, T]  [a, 0]  [c, T]  [d, T]  [b, +]  
+
+pair to be killed: c,T
+After Killing{Pair e,T, Pair a,0, Pair b,+, Pair d,T}
+Generating c,-
+
+Outset: 
+[e, T]  [a, 0]  [b, +]  [d, T]  [c, -]  
+Statement: d = a * b
+
+InSet: 
+[e, T]  [a, 0]  [b, +]  [d, T]  [c, -]  
+
+pair to be killed: d,T
+After Killing{Pair e,T, Pair a,0, Pair b,+, Pair c,-}
+Generating d,0
+
+Outset: 
+[e, T]  [a, 0]  [b, +]  [c, -]  [d, 0]  
+Statement: e = d / b
+
+InSet: 
+[e, T]  [a, 0]  [b, +]  [c, -]  [d, 0]  
+
+pair to be killed: e,T
+After Killing{Pair d,0, Pair a,0, Pair b,+, Pair c,-}
+Generating e,0
+
+Outset: 
+[d, 0]  [a, 0]  [b, +]  [c, -]  [e, 0]  
+Statement: b = b + a
+
+InSet: 
+[d, 0]  [a, 0]  [b, +]  [c, -]  [e, 0]  
+
+pair to be killed: b,+
+After Killing{Pair d,0, Pair a,0, Pair e,0, Pair c,-}
+Generating b,+
+
+Outset: 
+[d, 0]  [a, 0]  [e, 0]  [c, -]  [b, +]  
+Statement: c = c + a
+
+InSet: 
+[d, 0]  [a, 0]  [e, 0]  [c, -]  [b, +]  
+
+pair to be killed: c,-
+After Killing{Pair d,0, Pair a,0, Pair e,0, Pair b,+}
+Generating c,-
+
+Outset: 
+[d, 0]  [a, 0]  [e, 0]  [b, +]  [c, -]  
+Statement: return
+result
+[d,0]
+[a,0]
+[e,0]
+[b,+]
+[c,-]
+Writing to sootOutput\bitvectorrd.Tester.jimple
+Soot finished on Tue Oct 26 22:37:01 IST 2021
+Soot has run for 0 min. 0 sec.
